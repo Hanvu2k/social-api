@@ -47,7 +47,7 @@ const upload = multer({storage})
 // route with files
 
 app.post('/auth/register', upload.single('picture'), register)
-app.post('/auth/posts',verifyToken, upload.single('picture'), createPost)
+app.post('/posts',verifyToken, upload.single('picture'), createPost)
 
 // route
 
@@ -58,7 +58,6 @@ app.use('/posts', postRoutes)
 //  mongoose setup
 
 const PORT = process.env.PORT|| 6001
-mongoose.set('strictQuery', false)
 mongoose.connect(process.env.MONGO_URL,{
     useNewUrlParser: true,
     useUnifiedTopology: true,
